@@ -1,15 +1,22 @@
+using System;
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class TTS_when_touched : MonoBehaviour
 {
+    private float talkDuration = 2.02f;
+    private float clipDuration;
+    private Animator animator;
     private AudioSource audioSource;
     private bool isTouchSupported;
 
     private void Start()
     {
+        animator = GetComponent<Animator>();
+
         audioSource = GetComponent<AudioSource>();
+
+        clipDuration = audioSource.clip.length;
 
         isTouchSupported = Input.touchSupported;
     }
@@ -34,6 +41,7 @@ public class TTS_when_touched : MonoBehaviour
 
             if (touch.phase == TouchPhase.Began && IsTouchHittingObject(touch))
             {
+                animator.SetTrigger("TalkTrigger");
                 audioSource.Play();
             }
         }
@@ -47,7 +55,9 @@ public class TTS_when_touched : MonoBehaviour
 
             if (Physics.Raycast(ray, out RaycastHit hit) && hit.collider.gameObject == gameObject)
             {
+                int repeatCounter = (int)Math.Round(clipDuration / talkDuration, 0);
                 audioSource.Play();
+                StartCoroutine(FireTalkTriggerNTimes(repeatCounter));
             }
         }
     }
@@ -64,5 +74,19 @@ public class TTS_when_touched : MonoBehaviour
             }
         }
         return false;
+    }
+
+    private IEnumerator FireTalkTriggerNTimes(int n)
+    {
+        int triggerCount = 0;
+
+        while (triggerCount < n) {
+            Debug.Log("fired");
+            animator.SetTrigger("TalkTrigger");
+
+            triggerCount++;
+
+            yield return new WaitForSeconds(talkDuration);
+        }
     }
 }
