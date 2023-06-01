@@ -135,7 +135,7 @@ GameObject:
   - component: {fileID: 73723431}
   - component: {fileID: 73723430}
   - component: {fileID: 73723429}
-  - component: {fileID: 73723428}
+  - component: {fileID: 73723432}
   m_Layer: 5
   m_Name: HintButton
   m_TagString: Untagged
@@ -164,20 +164,6 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0.441}
   m_SizeDelta: {x: 160, y: 30}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &73723428
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 73723426}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9ea2de9faddf34e45aeded54a8d8988b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  characterModelToAssign: Winston
-  characterModel: {fileID: 0}
 --- !u!114 &73723429
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -260,6 +246,18 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 73723426}
   m_CullTransparentMesh: 1
+--- !u!114 &73723432
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 73723426}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9ea2de9faddf34e45aeded54a8d8988b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &82885597 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 100312, guid: 8bf4ca6f6f02d554e9cbb663d10ef7a4,
@@ -278,8 +276,9 @@ GameObject:
   - component: {fileID: 94701497}
   - component: {fileID: 94701496}
   - component: {fileID: 94701495}
+  - component: {fileID: 94701498}
   m_Layer: 5
-  m_Name: Button2
+  m_Name: JumpButton
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -388,6 +387,18 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 94701493}
   m_CullTransparentMesh: 1
+--- !u!114 &94701498
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 94701493}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dd02a4e4cc49d704ba3635ebefc79d3f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &172976063
 GameObject:
   m_ObjectHideFlags: 0
@@ -522,7 +533,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Functionality 2
+  m_text: Jump
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -963,6 +974,7 @@ GameObject:
   - component: {fileID: 872557544}
   - component: {fileID: 872557543}
   - component: {fileID: 872557542}
+  - component: {fileID: 872557545}
   m_Layer: 5
   m_Name: CloseButton
   m_TagString: Untagged
@@ -1073,6 +1085,18 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 872557540}
   m_CullTransparentMesh: 1
+--- !u!114 &872557545
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 872557540}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6f86bd4fc61ac3a45961f07e005c94a4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1425280335
 GameObject:
   m_ObjectHideFlags: 0
@@ -1586,7 +1610,6 @@ GameObject:
   - component: {fileID: 2084875578}
   - component: {fileID: 2084875577}
   - component: {fileID: 2084875582}
-  - component: {fileID: 2084875583}
   m_Layer: 5
   m_Name: Canvas
   m_TagString: Canvas
@@ -1705,18 +1728,6 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1.7097595, y: 1.27359}
   m_EdgeRadius: 0
---- !u!114 &2084875583
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2084875576}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 339df1e5f82a0df46b3b29141bf5e90c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &2100156356
 GameObject:
   m_ObjectHideFlags: 0
