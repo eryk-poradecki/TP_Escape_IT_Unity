@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using WebSocketSharp;
+using Newtonsoft.Json;
 
 
 public class WebSocketButtonHandler : MonoBehaviour
@@ -35,7 +36,13 @@ public class WebSocketButtonHandler : MonoBehaviour
 
     private void WebSocketButtonClickHandler()
     {
+        var message = new Dictionary<string, string>
+        {
+            { "hint", "I need help!" }
+        };
 
+        string messageJSON = JsonConvert.SerializeObject(message);
+        ws.Send(messageJSON);
     }
 
     private void OnDestroy()
