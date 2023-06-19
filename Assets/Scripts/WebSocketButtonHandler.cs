@@ -6,14 +6,16 @@ using WebSocketSharp;
 using Newtonsoft.Json;
 using System.IO;
 using UnityEngine.Networking;
+using TMPro;
 
 public class WebSocketButtonHandler : MonoBehaviour
 {
     private string characterModelToAssign = "Winston";
     private GameObject characterModel;
     private AudioSource audioSource;
-    public WebSocket webSocket;
+    private WebSocket webSocket;
     private Button webSocketButton;
+	private TMP_InputField inputField;
  
 	private class WebSocketMessage
 	{
@@ -28,7 +30,7 @@ public class WebSocketButtonHandler : MonoBehaviour
 
         Debug.Log("Initialization started!");
 
-        webSocket = new WebSocket("ws://localhost:8000/ws/socket-server/");
+        webSocket = new WebSocket("ws://localhost:8000/ws/socket-server/unity/?room_id=1");
         
         webSocket.OnOpen += (sender, e) =>
         {
@@ -57,6 +59,8 @@ public class WebSocketButtonHandler : MonoBehaviour
         
 		webSocketButton = GetComponent<Button>();
         webSocketButton.onClick.AddListener(WebSocketButtonClickHandler);
+        GameObject inputFieldObject = GameObject.Find("QuestionInputField");
+		inputField = inputFieldObject.GetComponent<TMP_InputField>();
 
         webSocket.Connect();
     }
@@ -83,15 +87,29 @@ public class WebSocketButtonHandler : MonoBehaviour
         }
     }
     
-    private void WebSocketButtonClickHandler()
+   private void WebSocketButtonClickHandler()
     {
-        var message = new Dictionary<string, string>
-        {
-            { "type", "help_request" }
-        };
+		string message = inputField.text;
+		inputField.text = "";
+		Dictionary<string, string> socketMessage;
 
-        string messageJSON = JsonConvert.SerializeObject(message);
+		if (message == "")
+		{
+    		socketMessage = new Dictionary<string, string>
+    		{
+    		    { "type", "help_request" }
+   			};
+		}
+		else
+		{
+			socketMessage = new Dictionary<string, string>
+    		{
+    		    { "type", "custom_help_request" },
+				{ "message", message }
+   			};
+		}
 
+        string messageJSON = JsonConvert.SerializeObject(socketMessage);
         webSocket.Send(messageJSON);
     }
 
