@@ -6,7 +6,7 @@ using UnityEngine.UI;
 
 public class HintButtonHandler : MonoBehaviour
 {
-    private string characterModelToAssign = "Winston";
+    private string characterModelToAssign = "Skeleton";
     private GameObject characterModel;
     private Button hintButton;
     private float talkDuration = 2.02f;

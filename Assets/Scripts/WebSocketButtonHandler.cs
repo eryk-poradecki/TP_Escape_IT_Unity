@@ -10,7 +10,7 @@ using TMPro;
 
 public class WebSocketButtonHandler : MonoBehaviour
 {
-    private string characterModelToAssign = "Winston";
+    private string characterModelToAssign = "Skeleton";
     private GameObject characterModel;
     private AudioSource audioSource;
     private WebSocket webSocket;

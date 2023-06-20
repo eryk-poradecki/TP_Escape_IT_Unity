@@ -5,7 +5,7 @@ using UnityEngine.UI;
 
 public class JumpButtonHandler : MonoBehaviour
 {
-    private string characterModelToAssign = "Winston";
+    private string characterModelToAssign = "Skeleton";
     private GameObject characterModel;
     private Button closeButton;
     private Animator animator;
