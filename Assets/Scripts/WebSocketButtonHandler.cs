@@ -16,8 +16,9 @@ public class WebSocketButtonHandler : MonoBehaviour
     private WebSocket webSocket;
     private Button webSocketButton;
 	private TMP_InputField inputField;
- 
-	private class WebSocketMessage
+    private Animator animator;
+
+    private class WebSocketMessage
 	{
 		public string type;
 		public string message;	
@@ -27,6 +28,7 @@ public class WebSocketButtonHandler : MonoBehaviour
     {
         characterModel = GameObject.Find(characterModelToAssign);
         audioSource = characterModel.GetComponent<AudioSource>();
+        animator = characterModel.GetComponent<Animator>();
 
         Debug.Log("Initialization started!");
 
@@ -82,12 +84,27 @@ public class WebSocketButtonHandler : MonoBehaviour
             {
                 AudioClip myClip = DownloadHandlerAudioClip.GetContent(www);
                 audioSource.clip = myClip;
+                StartCoroutine(FireTalkTriggerNTimes(1));
                 audioSource.Play();
             }
         }
     }
-    
-   private void WebSocketButtonClickHandler()
+
+    private IEnumerator FireTalkTriggerNTimes(int n)
+    {
+        int triggerCount = 0;
+
+        while (triggerCount < n)
+        {
+            animator.SetTrigger("TalkTrigger");
+
+            triggerCount++;
+
+            yield return new WaitForSeconds(2);
+        }
+    }
+
+    private void WebSocketButtonClickHandler()
     {
 		string message = inputField.text;
 		inputField.text = "";
