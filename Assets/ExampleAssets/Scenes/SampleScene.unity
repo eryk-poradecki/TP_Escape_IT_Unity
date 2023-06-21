@@ -2067,7 +2067,7 @@ GameObject:
   - component: {fileID: 1083371974}
   - component: {fileID: 1083371973}
   m_Layer: 5
-  m_Name: InputField (TMP)
+  m_Name: CodeInputField
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
