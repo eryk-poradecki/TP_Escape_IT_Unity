@@ -5,11 +5,15 @@ using UnityEngine.UI;
 using WebSocketSharp;
 using Newtonsoft.Json;
 using System.IO;
+using TMPro;
+
 
 public class ProgressButtonHandler : MonoBehaviour
 {
 	private WebSocket webSocket;
     private Button progressButton;
+	private TMP_InputField inputField;
+
     private class WebSocketMessage
 	{
 		public string type;
@@ -41,12 +45,16 @@ public class ProgressButtonHandler : MonoBehaviour
         
         progressButton = GetComponent<Button>();
         progressButton.onClick.AddListener(ProgressButtonClickHandler);
-
+		GameObject inputFieldObject = GameObject.Find("CodeInputField");
+		inputField = inputFieldObject.GetComponent<TMP_InputField>();
+		
         webSocket.Connect();
     }
     
    private void ProgressButtonClickHandler()
     {
+		inputField.text = "";
+
 	    Dictionary<string, string> socketMessage = new Dictionary<string, string>
     		{
     		    { "type", "progress" },
